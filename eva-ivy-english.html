@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eva Ivy English — Version 2 | HKDSE English Tutoring</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --magenta: #D63FA3;
+    --magenta-light: #E860BB;
+    --magenta-deep: #B02D88;
+    --magenta-glow: rgba(214, 63, 163, 0.18);
+    --charcoal: #1A1A1A;
+    --charcoal-soft: #2C2C2C;
+    --off-white: #FAF7F9;
+    --warm-white: #FFF0F9;
+    --mid-gray: #888;
+    --border: rgba(214, 63, 163, 0.2);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--charcoal);
+    color: var(--off-white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(26,26,26,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .nav-logo img { height: 42px; }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600; letter-spacing: 0.06em;
+    color: var(--off-white);
+    line-height: 1.2;
+  }
+  .nav-brand span { color: var(--magenta); display: block; font-size: 0.7rem; font-weight: 300; letter-spacing: 0.18em; font-family: 'Jost', sans-serif; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #ccc; text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--magenta-light); }
+  .nav-cta {
+    background: var(--magenta); color: #fff !important;
+    padding: 0.5rem 1.4rem; border-radius: 2px;
+    transition: background 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--magenta-deep) !important; color: #fff !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 8rem 4rem 4rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 75% 50%, rgba(214,63,163,0.13) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(214,63,163,0.07) 0%, transparent 60%),
+      linear-gradient(135deg, #1A1A1A 0%, #220F1C 100%);
+  }
+  .hero-grid-lines {
+    position: absolute; inset: 0; z-index: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(var(--magenta) 1px, transparent 1px),
+      linear-gradient(90deg, var(--magenta) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 660px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--magenta-light); margin-bottom: 1.6rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--magenta);
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.2rem);
+    font-weight: 300; line-height: 1.08;
+    letter-spacing: -0.01em; margin-bottom: 1.6rem;
+  }
+  h1 em {
+    font-style: italic; color: var(--magenta-light);
+  }
+  .hero-sub {
+    font-size: 1rem; font-weight: 300; line-height: 1.75;
+    color: #ccc; max-width: 520px; margin-bottom: 2.8rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--magenta); color: #fff;
+    padding: 0.9rem 2.2rem; border: none; cursor: pointer;
+    font-family: 'Jost', sans-serif; font-size: 0.8rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none; display: inline-block;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--magenta-deep); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: var(--off-white);
+    padding: 0.9rem 2.2rem; border: 1px solid rgba(255,255,255,0.25); cursor: pointer;
+    font-family: 'Jost', sans-serif; font-size: 0.8rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none; display: inline-block;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--magenta); color: var(--magenta-light); }
+
+  .hero-logo-large {
+    position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
+    z-index: 1; opacity: 0.12; width: min(360px, 38vw);
+    filter: saturate(0) brightness(2);
+  }
+  .hero-badge {
+    position: absolute; right: 4rem; bottom: 3rem; z-index: 2;
+    text-align: center; border: 1px solid var(--border);
+    padding: 1.2rem 1.6rem; background: rgba(26,26,26,0.7);
+    backdrop-filter: blur(8px);
+  }
+  .hero-badge strong {
+    display: block; font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; color: var(--magenta-light); line-height: 1;
+  }
+  .hero-badge span { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: #999; }
+
+  /* ── SECTION BASE ── */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--magenta); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  .section-title em { font-style: italic; color: var(--magenta-light); }
+  .section-desc {
+    font-size: 0.95rem; color: #aaa; font-weight: 300; line-height: 1.8;
+    max-width: 520px;
+  }
+  .divider {
+    width: 48px; height: 2px; background: var(--magenta);
+    margin: 1.4rem 0 2rem;
+  }
+
+  /* ── VISION STRIP ── */
+  .vision-strip {
+    background: var(--magenta); padding: 2.4rem 4rem;
+    display: flex; align-items: center; gap: 1.5rem;
+  }
+  .vision-strip .icon { font-size: 1.6rem; flex-shrink: 0; }
+  .vision-strip p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem; font-style: italic; font-weight: 300;
+    color: #fff; line-height: 1.4;
+  }
+  .vision-strip strong { font-style: normal; font-weight: 600; }
+
+  /* ── FEATURES ── */
+  .features { background: #141414; }
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px; margin-top: 3.5rem;
+  }
+  .feature-card {
+    background: var(--charcoal-soft); padding: 2.6rem 2rem;
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .feature-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 110%, var(--magenta-glow), transparent);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .feature-card:hover { border-color: var(--magenta); transform: translateY(-3px); }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300;
+    color: var(--magenta); opacity: 0.25; line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .feature-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .feature-card h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+    font-weight: 400; margin-bottom: 0.8rem; color: var(--off-white);
+  }
+  .feature-card p { font-size: 0.88rem; color: #999; line-height: 1.75; font-weight: 300; }
+
+  /* ── CLASS INFO ── */
+  .class-info { background: var(--charcoal); }
+  .class-info-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center;
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .stat-box {
+    border: 1px solid var(--border); padding: 1.8rem 1.4rem;
+    background: rgba(214,63,163,0.04);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .stat-box:hover { background: rgba(214,63,163,0.1); border-color: var(--magenta); }
+  .stat-box .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; color: var(--magenta-light); line-height: 1;
+    font-weight: 300;
+  }
+  .stat-box .unit { font-size: 1rem; color: var(--magenta); }
+  .stat-box .label { font-size: 0.75rem; color: #888; letter-spacing: 0.1em; margin-top: 0.4rem; }
+  .info-visual {
+    position: relative; display: flex; align-items: center; justify-content: center;
+  }
+  .info-visual-card {
+    background: linear-gradient(145deg, #2C2C2C, #1A1A1A);
+    border: 1px solid var(--border); padding: 3rem 2.5rem;
+    text-align: center; width: 100%;
+  }
+  .info-visual-card img { height: 90px; margin-bottom: 1.5rem; opacity: 0.9; }
+  .info-visual-card h4 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.6rem;
+    font-weight: 400; color: var(--off-white); margin-bottom: 0.5rem;
+  }
+  .info-visual-card p { font-size: 0.82rem; color: #888; }
+  .zoom-badge {
+    margin-top: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(214,63,163,0.15); border: 1px solid var(--border);
+    padding: 0.5rem 1.2rem; border-radius: 2px;
+  }
+  .zoom-badge span { font-size: 0.75rem; letter-spacing: 0.12em; color: var(--magenta-light); }
+
+  /* ── CURRICULUM ── */
+  .curriculum { background: #141414; }
+  .curriculum-list {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .curriculum-item {
+    padding: 1.8rem; border-left: 3px solid var(--magenta);
+    background: rgba(214,63,163,0.04);
+  }
+  .curriculum-item .ci-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
+  .curriculum-item h4 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400;
+    color: var(--off-white); margin-bottom: 0.4rem;
+  }
+  .curriculum-item p { font-size: 0.82rem; color: #888; line-height: 1.6; }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: linear-gradient(135deg, #200E1A 0%, var(--charcoal) 100%);
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .contact::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(214,63,163,0.12), transparent);
+  }
+  .contact-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+  .contact-card {
+    margin-top: 3rem; background: rgba(26,26,26,0.8);
+    border: 1px solid var(--border); padding: 3rem;
+    backdrop-filter: blur(10px);
+  }
+  .contact-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.8rem;
+    color: var(--off-white); margin-bottom: 0.3rem;
+  }
+  .contact-role { font-size: 0.75rem; color: var(--magenta); letter-spacing: 0.18em; text-transform: uppercase; }
+  .contact-divider { width: 40px; height: 1px; background: var(--border); margin: 1.5rem auto; }
+  .wechat-block {
+    display: flex; align-items: center; justify-content: center; gap: 0.8rem;
+    background: rgba(214,63,163,0.1); border: 1px solid var(--border);
+    padding: 1.2rem 2rem; margin: 1.5rem 0;
+  }
+  .wechat-icon { font-size: 1.4rem; }
+  .wechat-label { font-size: 0.7rem; letter-spacing: 0.12em; color: #888; display: block; }
+  .wechat-id { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--magenta-light); }
+  .contact-note { font-size: 0.82rem; color: #777; line-height: 1.7; margin-top: 1rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0E0E0E; padding: 2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer p { font-size: 0.75rem; color: #555; }
+  footer .footer-brand {
+    font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: #666;
+  }
+  footer .footer-brand span { color: var(--magenta); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * { animation: fadeUp 0.9s ease forwards; opacity: 0; }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  h1 { animation-delay: 0.25s; }
+  .hero-sub { animation-delay: 0.4s; }
+  .hero-btns { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .hero-logo-large { display: none; }
+    .hero-badge { right: 1.5rem; }
+    .class-info-inner { grid-template-columns: 1fr; gap: 3rem; }
+    footer { padding: 1.5rem; }
+    .vision-strip { padding: 1.8rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="/mnt/user-data/uploads/1778970127774_image.png" alt="Eva Ivy English Logo">
+    <div class="nav-brand">
+      Eva Ivy English
+      <span>Version 2</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#classes">Classes</a></li>
+    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <!-- Faint logo watermark -->
+  <img class="hero-logo-large" src="/mnt/user-data/uploads/1778970127774_image.png" alt="">
+  <div class="hero-content">
+    <div class="hero-eyebrow">HKDSE English Tutoring · Online via Zoom</div>
+    <h1>Real <em>improvement</em><br>in English—<br>built to <em>last.</em></h1>
+    <p class="hero-sub">See measurable growth in writing and speaking, aligned with HKDSE requirements. Taught by experienced American high school English teachers, online.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book a Class</a>
+      <a href="#features" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <strong>4</strong>
+    <span>Students<br>per Class</span>
+  </div>
+</section>
+
+<!-- VISION STRIP -->
+<div class="vision-strip">
+  <div class="icon">✦</div>
+  <p>"See <strong>real improvement</strong> in English writing and speaking — aligned with <strong>HKDSE requirements.</strong>"</p>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-label">Why Eva Ivy English</div>
+  <div class="section-title">What sets us <em>apart</em></div>
+  <div class="divider"></div>
+  <p class="section-desc">We bring authentic American classroom expertise directly to your screen — a small, focused, highly effective learning environment.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-num">01</div>
+      <div class="feature-icon">🎓</div>
+      <h3>American-Trained Teachers</h3>
+      <p>Our instructors are experienced English teachers from high schools across the United States, bringing real classroom credibility and native fluency to every session.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">02</div>
+      <div class="feature-icon">📚</div>
+      <h3>Systematic Skill Building</h3>
+      <p>We develop all four pillars — vocabulary, grammar, reading comprehension, writing, and speaking — in a structured, progressive sequence tailored to HKDSE standards.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">03</div>
+      <div class="feature-icon">📝</div>
+      <h3>Exam-Integrated Teaching</h3>
+      <p>HKDSE past papers and exam patterns are woven directly into lessons. Students don't just learn English — they learn how to excel in the exam that matters.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">04</div>
+      <div class="feature-icon">👥</div>
+      <h3>Small Class, Big Impact</h3>
+      <p>With only 4 students per class, every student receives the individual attention they need. No one falls through the cracks in our focused, intimate setting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLASS INFO -->
+<section class="class-info" id="classes">
+  <div class="class-info-inner">
+    <div>
+      <div class="section-label">Class Details</div>
+      <div class="section-title">Flexible, frequent,<br><em>fully online</em></div>
+      <div class="divider"></div>
+      <p class="section-desc">With many American teachers on board, a new class can begin at any time. Learning fits around your schedule — not the other way around.</p>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="num">4</div>
+          <div class="label">Students per class — intimate & focused</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">90<span class="unit">min</span></div>
+          <div class="label">Per session — deep, productive learning</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">Any<span class="unit" style="font-size:0.8rem"> time</span></div>
+          <div class="label">Classes start whenever you're ready</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">100<span class="unit">%</span></div>
+          <div class="label">Online via Zoom — learn from anywhere</div>
+        </div>
+      </div>
+    </div>
+    <div class="info-visual">
+      <div class="info-visual-card">
+        <img src="/mnt/user-data/uploads/1778970127774_image.png" alt="Eva Ivy English">
+        <h4>Eva Ivy English</h4>
+        <p style="margin-bottom:0.3rem;">Version 2</p>
+        <p>HKDSE Aligned · American Teachers</p>
+        <div class="zoom-badge">
+          <span>💻</span>
+          <span>Live sessions on Zoom</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum" id="curriculum">
+  <div class="section-label">Curriculum</div>
+  <div class="section-title">A complete path to <em>English excellence</em></div>
+  <div class="divider"></div>
+  <p class="section-desc">Every aspect of the HKDSE English syllabus is covered — systematically, clearly, and effectively.</p>
+  <div class="curriculum-list">
+    <div class="curriculum-item">
+      <div class="ci-icon">🔤</div>
+      <h4>Vocabulary</h4>
+      <p>Rich, contextual word-building strategies aligned to academic and exam-level English.</p>
+    </div>
+    <div class="curriculum-item">
+      <div class="ci-icon">⚙️</div>
+      <h4>Grammar</h4>
+      <p>Systematic grammar instruction from foundational rules to complex sentence structures.</p>
+    </div>
+    <div class="curriculum-item">
+      <div class="ci-icon">📖</div>
+      <h4>Reading Comprehension</h4>
+      <p>Analytical reading skills developed through HKDSE-style passages and question types.</p>
+    </div>
+    <div class="curriculum-item">
+      <div class="ci-icon">✍️</div>
+      <h4>Writing</h4>
+      <p>From structured paragraphs to full essays — crafted to meet HKDSE marking standards.</p>
+    </div>
+    <div class="curriculum-item">
+      <div class="ci-icon">🗣️</div>
+      <h4>Speaking</h4>
+      <p>Confidence-building oral practice aligned with HKDSE speaking assessment criteria.</p>
+    </div>
+    <div class="curriculum-item">
+      <div class="ci-icon">🏆</div>
+      <h4>Exam Practice</h4>
+      <p>Real past papers and timed exercises integrated into every stage of learning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Get in Touch</div>
+    <div class="section-title">Ready to <em>start?</em></div>
+    <div class="divider" style="margin-left: auto; margin-right: auto;"></div>
+    <p class="section-desc" style="margin: 0 auto; text-align: center;">Classes are available to begin right away. Reach out to our coordinator and we'll place you in the next available class.</p>
+    <div class="contact-card">
+      <div class="contact-name">Chelsea Yan</div>
+      <div class="contact-role">Course Coordinator · Eva Ivy English</div>
+      <div class="contact-divider"></div>
+      <div class="wechat-block">
+        <div class="wechat-icon">💬</div>
+        <div>
+          <span class="wechat-label">WeChat ID</span>
+          <div class="wechat-id">高球界</div>
+        </div>
+      </div>
+      <p class="contact-note">Add Chelsea on WeChat using the ID above to enquire about class schedules, pricing, and enrolment. We welcome students preparing for HKDSE at all levels.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Eva Ivy English — Version 2. All rights reserved.</p>
+  <div class="footer-brand">Eva Ivy <span>English</span></div>
+  <p>Virtual English tutoring · HKDSE Aligned</p>
+</footer>
+
+</body>
+</html>
